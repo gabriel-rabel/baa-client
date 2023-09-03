@@ -54,25 +54,25 @@ export default function LoginPage() {
       if (userType === "user") navigate("/profile");
       if (userType === "business") navigate("/profile-business");
     } catch (error) {
-      console.log("Erro ao conectar ao banco de dados. senha");
-      toast.error("Senha ou usuário inválido!");
+      toast.error("Erro: Senha ou usuário inválido!");
     }
   }
 
   return (
     <div className="flex min-h-full justify-center items-center bg-gray-100">
       <div className="sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow">
+        
         <img
           className="max-w-[200px]"
           src={Logo}
           alt="Vagas Daqui"
         />
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 text-gray-900">
-          Entre com a sua conta
-        </h2>
+        
 
         <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
-          <div className="flex items-center justify-evenly space-x-4">
+        <p>Como deseja entrar?</p>
+          <div className="flex items-center space-x-4">
+            
             <label className="block text-sm font-medium leading-6 text-gray-900">
               Usuário
               <input

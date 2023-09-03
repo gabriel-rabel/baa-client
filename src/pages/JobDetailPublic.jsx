@@ -52,7 +52,7 @@ export default function JobDetailPublic() {
           <p className="text-sm">{job.business?.description}</p>
         </div>
         <div className="mt-4">
-        <Link to="/signup" className="bg-blue-900 hover:bg-blue-600 rounded-md text-white px-4 py-2">Tem interesse? Cadastre-se no nosso site</Link>
+        <Link to="/signup" className="bg-blue-900 hover:bg-blue-600 rounded-md text-white px-4 py-2 text-sm">Gostou da vaga? Cadastre-se</Link>
         </div>
       </div>
       

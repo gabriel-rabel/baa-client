@@ -5,7 +5,7 @@ import dateFormater from "../util/dateFormater";
 import banner from "../assets/banner1.png";
 import { AuthContext } from "../contexts/AuthContext";
 
-export default function HomePage() {
+export default function JobsPublicPage() {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
@@ -31,29 +31,13 @@ export default function HomePage() {
   }
 
   return (
-    <main className="bg-white">
-      <div className="flex justify-center">
-        <img src={banner} />
-      </div>
+    <div className="bg-white">
       <div className=" mx-10">
-        <div className="flex flex-col gap-5 bg-white">
-          <h2 className="text-xl font-semi-bold">
-            Bem-vindo ao Portal de Empregos de Navegantes e Região!
-          </h2>
-          <p>
-            Conectando empresas e profissionais talentosos em nossa região,
-            nosso portal oferece uma ampla gama de vagas de emprego. Desde
-            estágios até cargos de alta gerência, temos oportunidades para todos
-            os níveis de experiência. Simplificamos o processo de busca e oferta
-            de empregos, tornando mais fácil para as empresas cadastrar suas
-            vagas e para os profissionais encontrarem oportunidades que
-            correspondam às suas habilidades e interesses. Junte-se a nós e faça
-            parte dessa comunidade de sucesso!
-          </p>
-        </div>
-
         {/* AQUI VAI O SEARCH BAR E O FILTRO */}
-        <div className="flex flex-col lg:flex-row justify-end gap-2 mb-2 mt-2" id="search">
+        <div
+          className="flex flex-col lg:flex-row justify-end gap-2 mb-2 mt-2"
+          id="search"
+        >
           <input
             type="text"
             placeholder="Busque por vagas"
@@ -113,6 +97,6 @@ export default function HomePage() {
         </div>
       </div>
       <div className="p-5"></div>
-    </main>
+    </div>
   );
 }

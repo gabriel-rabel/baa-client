@@ -4,7 +4,7 @@ import { Tab } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater.jsx";
 
-export default function ProfileBusinessPage(params) {
+export default function ProfileBusinessPage() {
   const [business, setBusiness] = useState({});
   const [reload, setReload] = useState(false);
   const [formProfile, setFormProfile] = useState({
@@ -27,8 +27,6 @@ export default function ProfileBusinessPage(params) {
 
     getProfile(); //invocar
   }, [reload]);
-
-  console.log(business); //remover após o final do projeto
 
   function handleChangeProfile(e) {
     setFormProfile({ ...formProfile, [e.target.name]: e.target.value });

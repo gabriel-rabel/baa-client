@@ -83,6 +83,7 @@ export default function EditOffer() {
           <textarea
             rows="6"
             name="description"
+            placeholder="Digite aqui a sua oferta de vaga. É opcional a inserção de dados para contato, como telefone ou e-mail para envio de curriculos."
             value={job.description}
             onChange={handleChange}
             className="w-full p-2 mt-1 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"

@@ -45,7 +45,11 @@ export default function BusinessCreateOffer() {
 
   return (
     <div>
-      <h1 className="text-blue-600 font-bold text-2xl mb-6">Criar Vaga</h1>
+      <h1 className="text-blue-600 font-bold text-2xl mb-6"></h1>
+      <div className="bg-blue-400 text-white rounded-lg p-5">
+        <p>Atenção, ao cadastrar a vaga, se atente as informações inseridas, pois as mesmas serão de responsabilidade total da empresa contratante.</p>
+
+      </div>
       <form
         onSubmit={handleSubmit}
         className="rounded-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
@@ -64,6 +68,7 @@ export default function BusinessCreateOffer() {
           <textarea
             rows="6"
             name="description"
+            placeholder="Digite aqui a sua oferta de vaga. É opcional a inserção de dados para contato, como telefone ou e-mail para envio de curriculos."
             value={job.description}
             onChange={handleChange}
             className="w-full p-2 mt-1 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"

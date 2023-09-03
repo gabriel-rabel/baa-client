@@ -14,7 +14,7 @@ export default function JobsPage() {
 
     useEffect(() => {
        async function getJobs() {
-          const response = await api.get("/job/all/open");
+          const response = await api.get("job/all/open");
           setJobs(response.data);
        }
  

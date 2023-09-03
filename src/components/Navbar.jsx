@@ -73,7 +73,6 @@ export default function NavBar() {
     localStorage.removeItem("userId");
     localStorage.removeItem("userRole");
 
-
     navigate("/login");
   }
 
@@ -104,27 +103,55 @@ export default function NavBar() {
             to="/"
             className="text-dm font-semibold leading-6 text-gray-900"
           >
-            Home
+            Início
+          </Link>
+          {/* CONDICIONAIS DE USER */}
+          <Link
+            to={
+              isLoggedIn ? `/jobs` : `/jobs/public`
+            }
+            className="text-dm font-semibold leading-6 text-gray-900"
+          >
+            Vagas de Emprego
           </Link>
 
-          <Link
-            to="#"
-            className="text-dm font-semibold leading-6 text-gray-900"
-          >
-            Vagas
-          </Link>
-          <Link
-            to="#"
-            className="text-dm font-semibold leading-6 text-gray-900"
-          >
-            Cadastrar Vaga
-          </Link>
-          <Link
-            to="#"
-            className="text-dm font-semibold leading-6 text-gray-900"
-          >
-            Curriculos
-          </Link>
+          {isLoggedIn === false && (
+            <Link
+              to="/login"
+              className="text-dm font-semibold leading-6 text-gray-900"
+            >
+              Cadastrar Vaga
+            </Link>
+          )}
+          {isLoggedIn === true && (
+            <>
+              {role === "BUSINESS" && (
+                <>
+                  <Link
+                    to="/business/criar-vaga"
+                    className="text-dm font-semibold leading-6 text-gray-900"
+                  >
+                    Cadastrar Vaga
+                  </Link>
+                  <Link
+                    to="/profile-business"
+                    className="text-dm font-semibold leading-6 text-gray-900"
+                  >
+                    Minhas Vagas
+                  </Link>
+                </>
+              )}
+              {role === "USER" && (
+                  <Link
+                    to="/profile"
+                    className="text-dm font-semibold leading-6 text-gray-900"
+                  >
+                    Minhas Candidaturas
+                  </Link>
+              )}
+            </>
+          )}
+
           <Link
             to="#"
             className="text-dm font-semibold leading-6 text-gray-900"
@@ -132,61 +159,50 @@ export default function NavBar() {
             Contato
           </Link>
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3 items-center">
           {isLoggedIn === false && (
             <>
-              <Link
-                to="/signup"
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                <p>Cadastrar</p>
-              </Link>
               <Link
                 to="/login"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
-                Entrar <span aria-hidden="true">&rarr;</span>
+                <p>Entrar</p>
               </Link>
-              
+              <Link
+                to="/signup"
+                className="text-sm font-semibold leading-6 text-white bg-blue-900 rounded-md px-4 py-2"
+              >
+                Cadastre-se <span aria-hidden="true">&rarr;</span>
+              </Link>
             </>
           )}
           {isLoggedIn === true && (
-                <>
-                  {role === "BUSINESS" && (
-                    
-                    <Link
-                      to="/profile-business"
-                      className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Profile
-                    </Link>
-                  )}
-                  {role === "USER" && (
-                    <>
-                    <Link
-                      to="/jobs"
-                      className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Vagas
-                    </Link>
-
-                    <Link
-                      to="/profile"
-                      className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Profile
-                    </Link>
-                    </>
-                  )}
-                  <button
-                    onClick={handleLogout}
-                    className="bg-blue-900 hover:bg-blue-700 text-white rounded-md p-1 w-20"
-                  >
-                    {" "}
-                    Logout
-                  </button>
-                </>
+            <>
+              {role === "BUSINESS" && (
+                <Link
+                  to="/profile-business"
+                  className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Perfil
+                </Link>
               )}
+              {role === "USER" && (
+                  <Link
+                    to="/profile"
+                    className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Perfil
+                  </Link>
+              )}
+              <button
+                onClick={handleLogout}
+                className="bg-blue-900 hover:bg-blue-700 text-white rounded-md p-1 w-20"
+              >
+                {" "}
+                Sair
+              </button>
+            </>
+          )}
         </div>
       </nav>
       <Dialog
@@ -218,26 +234,25 @@ export default function NavBar() {
                   to="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Home
+                  Início
                 </Link>
-                <Link
-                  to="/Vagas"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Vagas
-                </Link>
-                <Link
-                  to="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Cadastrar Vaga
-                </Link>
-                <Link
-                  to="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Curriculos
-                </Link>
+
+                {isLoggedIn === false && (
+                  <>
+                    <Link
+                      to="/Vagas"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Vagas de Emprego
+                    </Link>
+                    <Link
+                      to="#"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Cadastrar Vaga
+                    </Link>
+                  </>
+                )}
                 <Link
                   to="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -249,7 +264,7 @@ export default function NavBar() {
                 {isLoggedIn === false && (
                   <>
                     <Link
-                      to="#"
+                      to="/signup"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Cadastrar
@@ -258,43 +273,43 @@ export default function NavBar() {
                       to="/signup"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
-                      Entrar
+                      Cadastrar
                     </Link>
                     <Link
                       to="/login"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
-                      Sign up
+                      Entrar
                     </Link>
                   </>
                 )}
                 {isLoggedIn === true && (
-              <>
-                {role === "BUSINESS" && (
-                  <Link
-                    to="/profile-business"
-                    className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Profile
-                  </Link>
+                  <>
+                    {role === "BUSINESS" && (
+                      <Link
+                        to="/profile-business"
+                        className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Perfil
+                      </Link>
+                    )}
+                    {role === "USER" && (
+                      <Link
+                        to="/profile"
+                        className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Perfil
+                      </Link>
+                    )}
+                    <button
+                      onClick={handleLogout}
+                      className="bg-blue-900 hover:bg-blue-700 text-white rounded-md p-1 w-20"
+                    >
+                      {" "}
+                      Sair
+                    </button>
+                  </>
                 )}
-                {role === "USER" && (
-                  <Link
-                    to="/profile"
-                    className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Profile
-                  </Link>
-                )}
-                <button
-                  onClick={handleLogout}
-                  className="bg-blue-900 hover:bg-blue-700 text-white rounded-md p-1 w-20"
-                >
-                  {" "}
-                  Logout
-                </button>
-              </>
-            )}
               </div>
             </div>
           </div>
