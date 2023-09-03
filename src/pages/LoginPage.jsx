@@ -33,12 +33,12 @@ export default function LoginPage() {
       let response;
 
       if (userType === "user") {
-        response = await axios.post("http://localhost:4000/user/login", form);
+        response = await axios.post("https://vagasdaqui.cyclic.cloud/user/login", form);
       }
 
       if (userType === "business") {
         response = await axios.post(
-          "http://localhost:4000/business/login",
+          "https://vagasdaqui.cyclic.cloud/business/login",
           form
         );
       }

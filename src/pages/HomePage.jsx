@@ -14,7 +14,7 @@ export default function HomePage() {
   useEffect(() => {
     async function getJobs() {
       const response = await axios.get(
-        "http://localhost:4000/job/all/open/public"
+        "https://vagasdaqui.cyclic.cloud/job/all/open/public"
       );
       setJobs(response.data);
     }

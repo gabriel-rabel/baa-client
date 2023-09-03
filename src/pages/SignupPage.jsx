@@ -32,13 +32,13 @@ function SignupPage() {
       const url = await getUrl(photo);
 
       if (userType === "user") {
-        await axios.post("http://localhost:4000/user/signup", {
+        await axios.post("https://vagasdaqui.cyclic.cloud/user/signup", {
           ...form,
           profilePicture: url,
         });
       }
       if (userType === "business") {
-        await axios.post("http://localhost:4000/business/signup", {
+        await axios.post("https://vagasdaqui.cyclic.cloud/business/signup", {
           ...form,
           profilePicture: url,
         });
