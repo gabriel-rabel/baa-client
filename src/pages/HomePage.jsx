@@ -31,12 +31,11 @@ export default function HomePage() {
   }
 
   return (
-    <main className="bg-white">
-     
-        <div className="flex justify-center">
-          <img src={banner} />
-        </div>
-        <div className=" mx-10"> 
+    <main className="bg-white min-h-screen">
+      <div className="flex justify-center">
+        <img src={banner} />
+      </div>
+      <div className=" mx-10">
         <div className="flex flex-col gap-5 bg-white">
           <h2 className="text-xl font-semi-bold">
             Bem-vindo ao Portal de Empregos de Navegantes e Região!
@@ -89,10 +88,11 @@ export default function HomePage() {
             .map((job) => {
               return (
                 <Link
-                  to={isLoggedIn ? `/jobs/${job._id}` : `/jobs/public/${job._id}`}
+                  to={
+                    isLoggedIn ? `/jobs/${job._id}` : `/jobs/public/${job._id}`
+                  }
                   key={job._id}
                   className="border rounded-sm shadow-sm flex flex-col p-2 bg-white transnform hover:scale-105 transition-transform duration-300 gap-2"
-                  
                 >
                   <div className="flex justify-between">
                     <h1 className="font-semibold text-blue-900">{job.title}</h1>
@@ -112,6 +112,7 @@ export default function HomePage() {
             })}
         </div>
       </div>
+      <div className="p-5"></div>
     </main>
   );
 }

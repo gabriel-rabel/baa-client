@@ -82,7 +82,7 @@ function SignupPage() {
              alt="Vagas Daqui"
           />
           <h2 className="mt-4 text-center text-2xl font-bold leading-9 text-gray-900">
-             Cadastre-se na sua conta
+             Cadastre sua conta
           </h2>
 
           <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
