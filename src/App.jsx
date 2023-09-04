@@ -15,6 +15,7 @@ import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
 import EditOffer from "./pages/EditOffer";
 import JobDetailPublic from "./pages/JobDetailPublic";
+import TermsOfUse from "./pages/TermsOfUsePage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/jobs/public" element={<JobsPublicPage />} />
           <Route path="/jobs/public/:id_job" element={<JobDetailPublic />} />
+          <Route path="/termos" element={<TermsOfUse />} />
           /*Rotas Protegidas */
           <Route
             path="/profile"

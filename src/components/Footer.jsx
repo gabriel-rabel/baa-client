@@ -27,7 +27,7 @@ export default function Footer(params) {
               </a>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <a href="/termos" className="mr-4 hover:underline md:mr-6 ">
                 Termos de uso
               </a>
             </li>

@@ -77,10 +77,11 @@ export default function BusinessCreateOffer() {
 
         <div className="flex justify-between">
           <div className="flex flex-col space-y-2">
-            <label className="text-gray-600 font-semibold">Salario:</label>
+            <label className="text-gray-600 font-semibold">Salário:</label>
             <input
               name="salary"
               value={job.salary}
+              placeholder="A combinar"
               onChange={handleChange}
               className="w-full p-2 mt-1 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
             />

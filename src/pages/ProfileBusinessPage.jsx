@@ -45,12 +45,12 @@ export default function ProfileBusinessPage() {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 mt-10">
       <Link
         to="/business/criar-vaga"
-        className="bg-indigo-500 p-3 text-center text-white rounded-lg shadow-lg   "
+        className="bg-blue-900 p-3 text-center text-white rounded-lg shadow-lg   "
       >
-        Crie uma vaga
+        Cadastrar uma vaga
       </Link>
 
       <Tab.Group>
