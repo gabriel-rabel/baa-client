@@ -86,9 +86,6 @@ export default function JobDetailPage() {
           <h2 className="text-lg font-semibold">Empresa</h2>
           <p className="text-sm">{job.business?.name}</p>
           <p className="text-sm">{job.business?.description}</p>
-          <p className="text-sm">
-            Contato: {job.business?.email}, {job.business?.telefone}
-          </p>
         </div>
 
         {role === "USER" && alreadyApply === false && (

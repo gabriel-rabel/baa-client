@@ -52,7 +52,7 @@ export default function BusinessCreateOffer() {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="rounded-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
+        className="rounded-xl mt-5 bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
       >
         <div className="flex flex-col space-y-2">
           <label className="text-gray-600 font-semibold">Título:</label>

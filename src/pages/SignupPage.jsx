@@ -73,7 +73,7 @@ function SignupPage() {
   }
 
   return (
-    <div>
+    <div className="mt-5">
     <div className="flex min-h-full justify-center items-center bg-gray-100">
        <div className="sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow">
           <img

@@ -76,6 +76,7 @@ export default function EditOffer() {
             value={job.title}
             onChange={handleChange}
             className="w-full p-2 mt-1 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+            required
           />
         </div>
         <div className="flex flex-col space-y-2">

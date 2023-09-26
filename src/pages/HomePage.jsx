@@ -35,25 +35,32 @@ export default function HomePage() {
       <div className="flex justify-center">
         <img src={banner} />
       </div>
-      <div className=" mx-10">
-        <div className="flex flex-col gap-5 bg-white">
-          <h2 className="text-xl font-semi-bold">
-            Bem-vindo ao Portal de Empregos de Navegantes e Região!
+      <div className="mx-10">
+        <div className="flex flex-col gap-5 bg-white my-5">
+          <h2 className="text-xl font-semi-bold self-center">
+            Bem-vindo ao novo Portal de Empregos de Navegantes e Região!
           </h2>
           <p>
-            Conectando empresas e profissionais talentosos em nossa região,
-            nosso portal oferece uma ampla gama de vagas de emprego. Desde
-            estágios até cargos de alta gerência, temos oportunidades para todos
-            os níveis de experiência. Simplificamos o processo de busca e oferta
-            de empregos, tornando mais fácil para as empresas cadastrar suas
-            vagas e para os profissionais encontrarem oportunidades que
-            correspondam às suas habilidades e interesses. Junte-se a nós e faça
-            parte dessa comunidade de sucesso!
+            Conectamos empresas e profissionais talentosos, oferecendo vagas de
+            todos os níveis de experiência. Facilitamos o cadastro de vagas para
+            empresas e a busca por oportunidades para profissionais. Junte-se a
+            nós e faça parte dessa comunidade de sucesso!
           </p>
+        </div>
+        <div className="flex gap-3 justify-evenly my-5">
+          <div className="flex w-1/2 h-20 bg-blue-600 rounded-md shadow-lg text-white items-center justify-center font-medium text-xl">
+            <p>BUSCAR UMA VAGA</p>
+          </div>
+          <div className="flex w-1/2 h-20 bg-yellow-500 rounded-md shadow-lg text-white items-center justify-center font-medium text-xl">
+            <p>CADASTRAR UMA VAGA</p>
+          </div>
         </div>
 
         {/* AQUI VAI O SEARCH BAR E O FILTRO */}
-        <div className="flex flex-col lg:flex-row justify-end gap-2 mb-2 mt-2" id="search">
+        <div
+          className="flex flex-col lg:flex-row justify-end gap-2 mb-2 mt-2"
+          id="search"
+        >
           <input
             type="text"
             placeholder="Busque por vagas"

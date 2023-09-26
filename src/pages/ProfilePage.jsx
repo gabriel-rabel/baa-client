@@ -73,7 +73,7 @@ function ProfilePage() {
   }
 
   return (
-    <div>
+    <div className="mt-5">
       <div className="m-5">
         <div className="">
           <h3>

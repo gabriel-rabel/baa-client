@@ -59,7 +59,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-full justify-center items-center bg-gray-100">
+    
+    <div className="flex min-h-full justify-center items-center bg-gray-100 mt-5">
+      
       <div className="sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow">
         
         <img

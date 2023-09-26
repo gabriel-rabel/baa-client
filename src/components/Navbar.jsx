@@ -73,7 +73,7 @@ export default function NavBar() {
     localStorage.removeItem("userId");
     localStorage.removeItem("userRole");
 
-    navigate("/login");
+    navigate("/");
   }
 
   return (
