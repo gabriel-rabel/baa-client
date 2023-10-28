@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../axios/api.js";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import EditOffer from "./EditOffer.jsx";
 
 export default function JobDetailPage() {
   const params = useParams();
@@ -56,10 +56,19 @@ export default function JobDetailPage() {
       console.log(error);
     }
   }
+  async function handleApprove() {
+    try {
+      await api.post(`/job/remove-candidate/${params.id_job}`);
+      navigate("/profile-business");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <>
-      <div className="border rounded-lg shadow-sm p-4 bg-white">
+    <div className="">
+      <p>Voltar</p>
+      <div className="border rounded-lg shadow-sm p-4 bg-white my-6">
         <h1 className="text-2xl font-semibold">{job.title}</h1>
         <div className="border"></div>
         <p className="text-sm">
@@ -76,7 +85,7 @@ export default function JobDetailPage() {
           Status:
           <span
             className={`inline-flex items-center rounded-md px-2 py-1 ${
-              job.status === "Fechada" ? "text-red-500" : "text-green-500"
+              job.status === "FECHADA" ? "text-red-500" : "text-green-500"
             }`}
           >
             {job.status}
@@ -144,6 +153,6 @@ export default function JobDetailPage() {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 }

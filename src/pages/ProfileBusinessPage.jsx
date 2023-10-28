@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import api from "../axios/api.js";
-import { Tab } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater.jsx";
 
@@ -9,7 +8,18 @@ export default function ProfileBusinessPage() {
   const [reload, setReload] = useState(false);
   const [formProfile, setFormProfile] = useState({
     name: "",
-    telefone: "",
+    phone: "",
+    cnpj: "",
+    logo: "",
+    address: {
+      street: "",
+      number: "",
+      neighborhood: "",
+      cep: "",
+      complement: "",
+      city: "",
+      state: "",
+    },
     email: "",
     description: "",
   });
@@ -28,15 +38,33 @@ export default function ProfileBusinessPage() {
     getProfile(); //invocar
   }, [reload]);
 
+  // function handleChangeProfile(e) {
+  //   setFormProfile({ ...formProfile, [e.target.name]: e.target.value });
+  // }
+
   function handleChangeProfile(e) {
-    setFormProfile({ ...formProfile, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Copie o estado atual
+    const updatedFormProfile = { ...formProfile };
+
+    // Se o campo pertence ao endereço, atualize-o no campo de endereço
+    if (name.startsWith("address.")) {
+      const addressField = name.replace("address.", ""); // Remove "address." do nome
+      updatedFormProfile.address[addressField] = value;
+    } else {
+      // Se não for um campo de endereço, atualize diretamente no estado
+      updatedFormProfile[name] = value;
+    }
+
+    // Defina o estado atualizado
+    setFormProfile(updatedFormProfile);
   }
 
   async function handleSubmitProfile(e) {
     e.preventDefault();
     try {
       const response = await api.put("/business/edit", formProfile);
-      console.log(response);
 
       setReload(!reload);
     } catch (error) {
@@ -45,145 +73,186 @@ export default function ProfileBusinessPage() {
   }
 
   return (
-    <div className="flex flex-col gap-2 mt-10">
-      <Link
-        to="/business/criar-vaga"
-        className="bg-blue-900 p-3 text-center text-white rounded-lg shadow-lg   "
-      >
-        Cadastrar uma vaga
-      </Link>
+    <div className="flex flex-col m-5 gap-5">
+      <div className="flex flex-col lg:flex-row gap-5">
+        {/* left side perfil */}
+        <div className="flex flex-col  justify-center rounded-md  lg:w-1/4  p-3 border">
+          <div className="flex justify-center p-5">
+            <img
+              src={formProfile.logo}
+              className="flex lg:ml-5 w-40 h-40 rounded-full"
+              alt="profile"
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            <h1 className="text-2xl  text-blue-900">{formProfile.name}</h1>
+            <p className="italic font-thin text-gray-500 text-sm">
+              {formProfile.email}
+            </p>
+            <p className="italic font-thin text-gray-500 text-sm">
+              {formProfile.phone}
+            </p>
 
-      <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
-          <Tab className="w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
-            Vagas
-          </Tab>
-          <Tab className="w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
-            Profile
-          </Tab>
-        </Tab.List>
-        <Tab.Panels className="mt-2">
-          {/*VAGAS*/}
-          <Tab.Panel className="rounded-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
-            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-300">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
-                    >
-                      Vaga
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Criada
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      <span className="sr-only">Editar</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {business.offers &&
-                    business.offers
-                      .sort(
-                        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-                      )
-                      .map((job) => (
-                        <tr key={job._id}>
-                          <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium sm:pl-6 text-blue-900">
-                            <Link to={`/jobs/${job._id}`}>{job.title}</Link>
-                          </td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {dateFormater(job.createdAt)}
-                          </td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {job.status}
-                          </td>
-                          <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            {job.status === "ABERTA" && (
-                              <Link
-                                to={`/business/editar-vaga/${job._id}`}
-                                className="text-indigo-600 hover:text-indigo-900"
-                              >
-                                Editar
-                              </Link>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                </tbody>
-              </table>
+            <p className="italic font-thin text-gray-500 text-sm">
+              {formProfile.address.city}, {formProfile.address.state}
+            </p>
+            <p className="italic font-thin text-gray-500 text-sm">
+              Membro desde: {dateFormater(formProfile.createdAt)}
+            </p>
+          </div>
+        </div>
+        {/* left side perfil */}
+        {/* right side perfil */}
+        <div className="flex flex-col rounded-md  lg:w-3/4 border">
+          <div>
+            <div className="bg-blue-900 p-2 rounded-t-md ">
+              <h1 className="text-lg text-white">Sobre</h1>
             </div>
-          </Tab.Panel>
-          <Tab.Panel className="rounded-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
-            <form onSubmit={handleSubmitProfile}>
-              <div className="flex flex-col space-y-2">
-                <label className="text-gray-600 font-semibold">
-                  Email:{" "}
-                  <span className="font-thin italic">
-                    (campo desabilitado para edição)
-                  </span>
-                </label>
-                <input
-                  name="email"
-                  value={formProfile.email}
-                  disabled
-                  onChange={handleChangeProfile}
-                  className="w-full p-2 mt-1 text-gray-400 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <label className="text-gray-600 font-semibold">Nome:</label>
-                <input
-                  name="name"
-                  value={formProfile.name}
-                  onChange={handleChangeProfile}
-                  className="w-full p-2 mt-1  shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <label className="text-gray-600 font-semibold">Telefone:</label>
-                <input
-                  name="telefone"
-                  value={formProfile.telefone}
-                  onChange={handleChangeProfile}
-                  className="w-full p-2 mt-1 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <label className="text-gray-600 font-semibold">
-                  Descrição:
-                </label>
-                <input
-                  name="description"
-                  value={formProfile.description}
-                  onChange={handleChangeProfile}
-                  className="w-full p-2 mt-1 shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="mt-2 w-full py-2 px-4 font-semibold text-white bg-blue-900 hover:bg-oblue-700 rounded-lg focus:ring focus:ring-blue-300"
-              >
-                Salvar
+            <div className="flex items-center m-6">
+              <p className="text-gray-500 font-thin text-justify">
+                {formProfile.description}
+              </p>
+            </div>
+          </div>
+          <div className="flex-row gap-5 w-full justify-around hidden lg:flex">
+            <div>
+              <button className="rounded p-3 bg-blue-900 text-white">
+                Cadastrar Vaga
               </button>
-            </form>
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
+            </div>
+            <div>
+              <button className="rounded p-3 bg-[#FFAA00] text-white">
+                Minhas Vagas
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* right side perfil */}
+      </div>
+
+      <div className="rounded-md border ">
+        <div className="bg-blue-900 p-2 rounded-t-md ">
+          <h1 className="text-lg text-white">Editar Perfil</h1>
+        </div>
+        <form onSubmit={handleSubmitProfile} className="m-6">
+          <div className="flex flex-col lg:flex-row gap-3">
+            <div className="flex flex-col lg:w-2/4">
+              <label className="text-gray-600 font-semibold">Nome:</label>
+              <input
+                name="name"
+                value={formProfile.name}
+                onChange={handleChangeProfile}
+                className="w-full  shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col lg:w-1/4">
+              <label className="text-gray-600 font-semibold">CNPJ:</label>
+              <input
+                name="cnpj"
+                value={formProfile.cnpj}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col lg:w-1/4">
+              <label className="text-gray-600 font-semibold">Telefone:</label>
+              <input
+                name="telefone"
+                value={formProfile.telefone}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-3">
+            <div className="flex flex-col lg:w-2/4">
+              <label className="text-gray-600 font-semibold">Rua:</label>
+              <input
+                name="address.street"
+                value={formProfile.address.street}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col lg:w-1/4">
+              <label className="text-gray-600 font-semibold">Número:</label>
+              <input
+                name="address.number"
+                value={formProfile.address.number}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col lg:w-1/4">
+              <label className="text-gray-600 font-semibold">Bairro:</label>
+              <input
+                name="address.neighborhood"
+                value={formProfile.address.neighborhood}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-3">
+            <div className="flex flex-col lg:w-2/5">
+              <label className="text-gray-600 font-semibold">
+                Complemento:
+              </label>
+              <input
+                name="address.complement"
+                value={formProfile.address.complement}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col lg:w-1/5">
+              <label className="text-gray-600 font-semibold">Cidade:</label>
+              <input
+                name="address.city"
+                value={formProfile.address.city}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col lg:w-1/5">
+              <label className="text-gray-600 font-semibold">Estado:</label>
+              <input
+                name="address.state"
+                value={formProfile.address.state}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-gray-600 font-semibold">CEP:</label>
+              <input
+                name="address.cep"
+                value={formProfile.address.cep}
+                onChange={handleChangeProfile}
+                className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <label className="text-gray-600 font-semibold">Descrição:</label>
+            <textarea
+              name="description"
+              rows="6"
+              value={formProfile.description}
+              onChange={handleChangeProfile}
+              className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+          </div>
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              className=" mt-2 w-40 py-2 px-4 font-semibold text-white bg-blue-900 hover:bg-oblue-700 rounded-lg focus:ring focus:ring-blue-300"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

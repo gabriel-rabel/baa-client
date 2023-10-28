@@ -33,12 +33,14 @@ function SignupPage() {
 
       if (userType === "user") {
         await axios.post("https://vagasdaqui.cyclic.cloud/user/signup", {
+         //await axios.post("http://localhost:4000/user/signup", {
           ...form,
           profilePicture: url,
         });
       }
       if (userType === "business") {
         await axios.post("https://vagasdaqui.cyclic.cloud/business/signup", {
+        // await axios.post("http://localhost:4000/business/signup", {
           ...form,
           profilePicture: url,
         });
@@ -73,16 +75,16 @@ function SignupPage() {
   }
 
   return (
-    <div className="mt-5">
-    <div className="flex min-h-full justify-center items-center bg-gray-100">
-       <div className="sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow">
+    <div className="mt-10">
+    <div className="flex min-h-full justify-center items-center ">
+       <div className="sm:w-full sm:max-w-sm ">
           <img
-             className="max-w-[200px]"
+             className="max-w-[200px] hidden sm:block mx-auto"
              src={Logo}
              alt="Vagas Daqui"
           />
-          <h2 className="mt-4 text-center text-2xl font-bold leading-9 text-gray-900">
-             Cadastre sua conta
+          <h2 className="mt-4 text-center text-2xl font-semibold leading-9 text-blue-900">
+             Criar Conta
           </h2>
 
           <form className="mt-4 space-y-4" onSubmit={handleSubmit}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import Logo from "../assets/logo.png"
+import Logo from "../assets/logo.png";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -34,11 +34,13 @@ export default function LoginPage() {
 
       if (userType === "user") {
         response = await axios.post("https://vagasdaqui.cyclic.cloud/user/login", form);
+        //response = await axios.post("http://localhost:4000/user/login", form);
       }
 
       if (userType === "business") {
         response = await axios.post(
           "https://vagasdaqui.cyclic.cloud/business/login",
+          //"http://localhost:4000/business/login",
           form
         );
       }
@@ -59,109 +61,108 @@ export default function LoginPage() {
   }
 
   return (
-    
-    <div className="flex min-h-full justify-center items-center bg-gray-100 mt-5">
-      
-      <div className="sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow">
-        
-        <img
-          className="max-w-[200px]"
-          src={Logo}
-          alt="Vagas Daqui"
-        />
-        
+    <div className="mt-10">
+      <div className="flex justify-center items-center bg-gray-100">
+        <div className="w-full max-w-sm bg-white p-8">
+          <img
+            className="max-w-[200px] hidden sm:block mx-auto"
+            src={Logo}
+            alt="Vagas Daqui"
+          />
+          <h2 className="mt-8 text-center text-2xl font-semibold leading-9 text-blue-900">
+            Acesse sua conta
+          </h2>
 
-        <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
-        <p>Como deseja entrar?</p>
-          <div className="flex items-center space-x-4">
-            
-            <label className="block text-sm font-medium leading-6 text-gray-900">
-              Usuário
-              <input
-                type="radio"
-                name="userType"
-                value="user"
-                onChange={handleRadio}
-                checked={userType === "user"}
-                className="ml-2"
-              />
-            </label>
+          <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
+            <div className="flex items-center space-x-4">
+              <label className="block text-sm font-medium leading-6 text-gray-900">
+                Usuário
+                <input
+                  type="radio"
+                  name="userType"
+                  value="user"
+                  onChange={handleRadio}
+                  checked={userType === "user"}
+                  className="ml-2"
+                />
+              </label>
 
-            <label className="block text-sm font-medium leading-6 text-gray-900">
-              Empresa
-              <input
-                type="radio"
-                name="userType"
-                value="business"
-                onChange={handleRadio}
-                checked={userType === "business"}
-                className="ml-2"
-              />
-            </label>
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Email
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={form.email}
-                onChange={handleChange}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
-              />
+              <label className="block text-sm font-medium leading-6 text-gray-900">
+                Empresa
+                <input
+                  type="radio"
+                  name="userType"
+                  value="business"
+                  onChange={handleRadio}
+                  checked={userType === "business"}
+                  className="ml-2"
+                />
+              </label>
             </div>
-          </div>
 
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Senha
-            </label>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={form.password}
-                onChange={handleChange}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
-              />
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm text-gray-900"
+              >
+                Email
+              </label>
+              <div className="">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <button
-              type="submit"
-              className="w-full justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900"
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm leading-6 text-gray-900"
+              >
+                Senha
+              </label>
+              <div className="">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  value={form.password}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="w-full justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900"
+              >
+                Entrar
+              </button>
+            </div>
+          </form>
+          <Toaster />
+
+          <p className="mt-10 text-center text-gray-500 text-xs">
+            Problemas com login?{" "}
+            <a
+              href="#"
+              className="font-semibold leading-6 text-blue-900 hover:text-blue-700"
             >
-              Entrar
-            </button>
-          </div>
-        </form>
-        
-    <Toaster />
-        <p className="mt-10 text-center text-gray-500 text-xs">
-          Problemas com login?{" "}
-          <a
-            href="#"
-            className="font-semibold leading-6 text-blue-900 hover:text-blue-700"
-          >
-            Entre em contato
-          </a>
-        </p>
+              Entre em contato
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

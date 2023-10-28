@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater";
-import banner from "../assets/banner1.png";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function JobsPublicPage() {
@@ -15,12 +14,12 @@ export default function JobsPublicPage() {
     async function getJobs() {
       const response = await axios.get(
         "https://vagasdaqui.cyclic.cloud/job/all/open/public"
+        //"http://localhost:4000/job/all/open/public"
       );
       setJobs(response.data);
     }
     getJobs();
   }, []);
-  console.log(jobs);
 
   function handleSearch(e) {
     setSearch(e.target.value);
@@ -31,8 +30,8 @@ export default function JobsPublicPage() {
   }
 
   return (
-    <div className="bg-white">
-      <div className=" mx-10">
+    <div className="mt-6">
+      <div className="">
         {/* AQUI VAI O SEARCH BAR E O FILTRO */}
         <div
           className="flex flex-col lg:flex-row justify-end gap-2 mb-2 mt-2"

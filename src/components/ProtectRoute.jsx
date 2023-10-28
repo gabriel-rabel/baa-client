@@ -9,8 +9,11 @@ export default function ProtectRoute({ Component }) {
     useEffect(() =>{
         if (!token) {
             navigate("/login")
+            handleLogout()
+
         }
     }, [navigate, token]);
 
   return <Component />
 }
+

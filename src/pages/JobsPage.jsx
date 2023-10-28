@@ -6,6 +6,7 @@ import dateFormater from "../util/dateFormater";
 
 
 
+
 export default function JobsPage() {
 
     const [jobs, setJobs] = useState([]);

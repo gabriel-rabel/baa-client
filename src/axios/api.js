@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: "https://vagasdaqui.cyclic.cloud/"
+    //baseURL: "http://localhost:4000/"
 
 })
 
