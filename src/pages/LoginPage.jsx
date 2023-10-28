@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import Logo from "../assets/logo.png";
 import api from "../axios/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importe os ícones de olho aberto e fechado
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -70,35 +71,38 @@ export default function LoginPage() {
 
           <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
             <div className="flex items-center space-x-4">
-              <label className="block text-sm font-medium leading-6 text-gray-900">
+              <div className="flex gap-1">
+              <input
+                type="radio"
+                name="userType"
+                value="user"
+                onChange={handleRadio}
+                checked={userType === "user"}
+                className="text-amber-400"
+              />
+              <label className="block text-sm text-blue-950 font-semibold">
                 Usuário
-                <input
-                  type="radio"
-                  name="userType"
-                  value="user"
-                  onChange={handleRadio}
-                  checked={userType === "user"}
-                  className="ml-2"
-                />
               </label>
-
-              <label className="block text-sm font-medium leading-6 text-gray-900">
+              </div>
+              <div className="flex gap-1">
+              <input
+                type="radio"
+                name="userType"
+                value="business"
+                onChange={handleRadio}
+                checked={userType === "business"}
+                className="text-amber-400"
+              />
+              <label className="flex text-sm text-blue-950 font-semibold">
                 Empresa
-                <input
-                  type="radio"
-                  name="userType"
-                  value="business"
-                  onChange={handleRadio}
-                  checked={userType === "business"}
-                  className="ml-2"
-                />
               </label>
+              </div>
             </div>
 
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm text-gray-900"
+                className="block text-sm text-blue-950 font-semibold"
               >
                 Email
               </label>
@@ -119,21 +123,33 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm leading-6 text-gray-900"
+                className="block text-sm text-blue-950 font-semibold"
               >
                 Senha
               </label>
-              <div className="">
+              <div className="relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"} // Use 'text' ou 'password' com base no estado showPassword
                   autoComplete="current-password"
                   required
                   value={form.password}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
                 />
+                <button
+                  type="button"
+                  onClick={toggleShowPassword}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  {showPassword ? (
+                    <FaEyeSlash className="text-blue-950" />
+                  ) : (
+                    <FaEye className="text-blue-950" />
+                  )}{" "}
+                  {/* Mostra o ícone apropriado com base no estado showPassword */}
+                </button>
               </div>
             </div>
 
@@ -154,7 +170,14 @@ export default function LoginPage() {
               href="#"
               className="font-semibold leading-6 text-blue-900 hover:text-blue-700"
             >
-              Entre em contato com a gente.
+              Entre em contato
+            </a>
+            {""} ou {""}
+            <a
+              href="/signup"
+              className="font-semibold leading-6 text-blue-900 hover:text-blue-700"
+            >
+              cadastre-se.
             </a>
           </p>
         </div>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../axios/api";
 import toast, { Toaster } from "react-hot-toast";
 import Logo from "../assets/logo.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function SignupPage() {
   const navigate = useNavigate();
@@ -14,10 +15,15 @@ function SignupPage() {
   });
   const [photo, setPhoto] = useState();
   const [userType, setUserType] = useState("user");
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleRadio(e) {
     setUserType(e.target.value);
   }
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -85,40 +91,43 @@ function SignupPage() {
           </h2>
 
           <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
-            <div className="flex items-center justify-evenly space-x-4">
-              <label className="block text-sm font-medium leading-6 text-gray-900">
+          <div className="flex items-center space-x-4">
+              <div className="flex gap-1">
+              <input
+                type="radio"
+                name="userType"
+                value="user"
+                onChange={handleRadio}
+                checked={userType === "user"}
+                className="text-amber-400"
+              />
+              <label className="block text-sm text-blue-950 font-semibold">
                 Usuário
-                <input
-                  type="radio"
-                  name="userType"
-                  value="user"
-                  onChange={handleRadio}
-                  checked={userType === "user"}
-                  className="ml-2"
-                />
               </label>
-
-              <label className="block text-sm font-medium leading-6 text-gray-900">
+              </div>
+              <div className="flex gap-1">
+              <input
+                type="radio"
+                name="userType"
+                value="business"
+                onChange={handleRadio}
+                checked={userType === "business"}
+                className="text-amber-400"
+              />
+              <label className="flex text-sm text-blue-950 font-semibold">
                 Empresa
-                <input
-                  type="radio"
-                  name="userType"
-                  value="business"
-                  onChange={handleRadio}
-                  checked={userType === "business"}
-                  className="ml-2"
-                />
               </label>
+              </div>
             </div>
 
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm text-blue-950 font-semibold"
               >
                 Nome Completo
               </label>
-              <div className="mt-2">
+              <div className="">
                 <input
                   id="name"
                   name="name"
@@ -134,11 +143,11 @@ function SignupPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm text-blue-950 font-semibold"
               >
                 Email
               </label>
-              <div className="mt-2">
+              <div className="">
                 <input
                   id="email"
                   name="email"
@@ -155,11 +164,11 @@ function SignupPage() {
             <div>
               <label
                 htmlFor="telefone"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm text-blue-950 font-semibold"
               >
                 Telefone
               </label>
-              <div className="mt-2">
+              <div className="">
                 <input
                   id="telefone"
                   name="telefone"
@@ -175,21 +184,29 @@ function SignupPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm text-blue-950 font-semibold"
               >
                 Senha
               </label>
-              <div className="mt-2">
+              <div className="relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
-                  autoComplete="new-password"
+                  type={showPassword ? "text" : "password"} // Use 'text' ou 'password' com base no estado showPassword
+                  autoComplete="current-password"
                   required
                   value={form.password}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
                 />
+                <button
+                  type="button"
+                  onClick={toggleShowPassword}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  {showPassword ? <FaEyeSlash className="text-blue-950"/> : <FaEye className="text-blue-950"/>}{" "}
+                  {/* Mostra o ícone apropriado com base no estado showPassword */}
+                </button>
               </div>
             </div>
 
@@ -243,15 +260,13 @@ function SignupPage() {
           </form>
           <Toaster />
 
-          <p className="mt-5 text-center text-xs text-gray-500">
-            Problemas com o cadastro?{" "}
+          <p className="mt-10 text-center text-gray-500 text-xs">
+            Problemas com cadastro?{" "}
             <a
-              href="https://wa.me/+5511981860227/?text=Não%20consegui%20me%20cadastrar%20no%20site"
+              href="#"
               className="font-semibold leading-6 text-blue-900 hover:text-blue-700"
-              target="_blank"
-              rel="noreferrer noopener"
             >
-              Entre em contato com a gente.
+              Entre em contato conosco.
             </a>
           </p>
         </div>
