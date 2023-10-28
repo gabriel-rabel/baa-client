@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater";
 import banner from "../assets/banner1.png";
@@ -18,9 +17,7 @@ export default function HomePage() {
 
   useEffect(() => {
     async function getJobs() {
-      //const response = await axios.get(
-     //   "http://localhost:4000/job/all/open/public"
-    //  );
+
       const response = await api.get(`/job/all/open/public`);
 
       const jobData = response.data;

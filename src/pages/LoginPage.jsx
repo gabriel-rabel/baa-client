@@ -1,8 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import Logo from "../assets/logo.png";
+import api from "../axios/api";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -33,16 +33,11 @@ export default function LoginPage() {
       let response;
 
       if (userType === "user") {
-        response = await axios.post("https://vagasdaqui.cyclic.cloud/user/login", form);
-        //response = await axios.post("http://localhost:4000/user/login", form);
+        response = await api.post("/user/login", form);
       }
 
       if (userType === "business") {
-        response = await axios.post(
-          "https://vagasdaqui.cyclic.cloud/business/login",
-          //"http://localhost:4000/business/login",
-          form
-        );
+        response = await api.post("/business/login", form);
       }
 
       const token = response.data.token;

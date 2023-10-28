@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater";
+import api from "../axios/api";
 
 export default function JobDetailPublic() {
   const [job, setJob] = useState({});
@@ -10,10 +10,8 @@ export default function JobDetailPublic() {
 
   useEffect(() => {
     async function getJob() {
-      const response = await axios.get(
-        `https://vagasdaqui.cyclic.cloud/job/${params.id_job}/public`
-        //`http://localhost:4000/job/${params.id_job}/public`
-      );
+
+      const response = await api.get(`/job/${params.id_job}/public`);
 
       setJob(response.data);
     }

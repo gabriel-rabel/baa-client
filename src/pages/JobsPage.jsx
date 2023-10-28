@@ -3,10 +3,6 @@ import api from "../axios/api.js";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater";
 
-
-
-
-
 export default function JobsPage() {
 
     const [jobs, setJobs] = useState([]);
