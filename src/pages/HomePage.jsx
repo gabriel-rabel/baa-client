@@ -6,6 +6,7 @@ import banner from "../assets/banner1.png";
 import { AuthContext } from "../contexts/AuthContext";
 import { BsBookmarkStarFill } from "react-icons/bs";
 import ads1 from "../assets/navgeek.png";
+import api from "../axios/api.js";
 
 export default function HomePage() {
   const [jobs, setJobs] = useState([]);
