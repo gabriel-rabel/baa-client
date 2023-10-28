@@ -20,7 +20,7 @@ export default function JobDetailPublic() {
   }, [params.id_job]);
 
   return (
-    <div className="">
+    <div className="my-6">
       <div className="border rounded-lg shadow-sm p-4 bg-white">
         <div>
         <div className="flex gap-3 justify-between">
@@ -40,7 +40,7 @@ export default function JobDetailPublic() {
         <p className="text-lg mt-3 text-[#FFAA00] font-semibold" >Informações da Vaga</p>
         
 
-        <pre className="mt-4 whitespace-pre-line font-sans text-gray-600">
+        <pre className="mt-4 text-sm whitespace-pre-line font-sans text-gray-600">
           {job.description}
         </pre>
         <p className="mt-2 text-gray-600">Salário: {job.salary}</p>
@@ -65,9 +65,9 @@ export default function JobDetailPublic() {
         <div className="mt-6">
           <Link
             to="/signup"
-            className="bg-blue-900 hover:bg-blue-600 rounded-md text-white px-4 py-2 text-sm"
+            className="bg-blue-900 hover:bg-blue-700 rounded-md text-white px-4 py-2 text-sm"
           >
-            Gostou da vaga? Cadastre-se
+            Quero me candidatar!
           </Link>
         </div>
       </div>

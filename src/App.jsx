@@ -17,6 +17,8 @@ import EditOffer from "./pages/EditOffer";
 import JobsBusinessList from "./pages/JobsBusinessList";
 import JobDetailPublic from "./pages/JobDetailPublic";
 import TermsOfUse from "./pages/TermsOfUsePage";
+import UserCandidatePage from "./pages/UserCandidatePage";
+import UserCurriculumPage from "./pages/UserCurriculumPage";
 
 
 function App() {
@@ -40,6 +42,15 @@ function App() {
               path="/profile"
               element={<ProtectRoute Component={ProfilePage} />}
             />
+            <Route
+              path="/minhas-candidaturas"
+              element={<ProtectRoute Component={UserCandidatePage} />}
+            />
+            <Route
+              path="/meu-curriculo"
+              element={<ProtectRoute Component={UserCurriculumPage} />}
+            />
+
             <Route
               path="/profile-business"
               element={<ProtectRoute Component={ProfileBusiness} />}

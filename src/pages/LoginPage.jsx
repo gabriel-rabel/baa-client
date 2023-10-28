@@ -154,7 +154,7 @@ export default function LoginPage() {
               href="#"
               className="font-semibold leading-6 text-blue-900 hover:text-blue-700"
             >
-              Entre em contato
+              Entre em contato com a gente.
             </a>
           </p>
         </div>

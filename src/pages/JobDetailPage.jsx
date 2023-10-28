@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import api from "../axios/api.js";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 import { Disclosure } from "@headlessui/react";
-import EditOffer from "./EditOffer.jsx";
 
 export default function JobDetailPage() {
   const params = useParams();
@@ -67,7 +66,6 @@ export default function JobDetailPage() {
 
   return (
     <div className="">
-      <p>Voltar</p>
       <div className="border rounded-lg shadow-sm p-4 bg-white my-6">
         <h1 className="text-2xl font-semibold">{job.title}</h1>
         <div className="border"></div>
@@ -123,6 +121,10 @@ export default function JobDetailPage() {
             <h1>Candidato Selecionado: {job.select_candidate.name}</h1>
           )}
           <div className="border mb-2"></div>
+          {(job.candidates?.length === 0 && (
+            <p className="text-gray-500">{job.business?.name}, lamentamos mas ainda não há candidatos registrados para esta vaga.</p>
+          )
+          )}
           {job.candidates?.map((candidate) => {
             return (
               <Disclosure key={candidate._id}>

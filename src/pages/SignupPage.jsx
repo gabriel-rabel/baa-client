@@ -251,7 +251,7 @@ function SignupPage() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              Entre em contato com a gente
+              Entre em contato com a gente.
             </a>
           </p>
         </div>

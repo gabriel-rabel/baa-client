@@ -268,6 +268,7 @@ export default function BusinessCreateOffer() {
             <label htmlFor="open_apply_false" className="text-sm">Não</label>
           </div>
         </div>
+        
 
         <button
           type="submit"

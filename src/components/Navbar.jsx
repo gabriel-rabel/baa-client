@@ -85,14 +85,6 @@ export default function NavBar() {
                   </Link>
                 </>
               )}
-              {role === "USER" && (
-                <Link
-                  to="/profile"
-                  className="text-dm font-semibold leading-6 text-gray-900"
-                >
-                  Minhas Candidaturas
-                </Link>
-              )}
             </>
           )}
 
@@ -131,12 +123,27 @@ export default function NavBar() {
                 </Link>
               )}
               {role === "USER" && (
+                <>
+                
                 <Link
+                  to="/minhas-candidaturas"
+                  className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Minhas Candidaturas
+                </Link>
+                <Link
+                to="/meu-curriculo"
+                className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Meu CurrÍculo
+              </Link>
+              <Link
                   to="/profile"
                   className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Perfil
                 </Link>
+                </>
               )}
               <button
                 onClick={handleLogout}
