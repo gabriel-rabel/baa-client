@@ -46,7 +46,7 @@ export default function HomePage() {
       </div>
       <section className="">
         <div className="flex flex-col gap-5 my-5 ">
-          <p className=" text-sm lg:text-base text-justify lg:font-normal text-blue-900">
+          <p className=" text-sm mx-4 lg:mx-0 lg:text-base text-justify lg:font-normal text-blue-900">
             Conectamos empresas e profissionais talentosos na região do{" "}
             <span className="font-semibold italic">"Vale do Itajaí"</span>,
             oferecendo vagas de todos os níveis de experiência. Facilitamos o
@@ -64,7 +64,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:grid lg:grid-cols-2 w-full gap-1">
+          <div className="flex flex-col  lg:grid lg:grid-cols-2 w-full gap-1">
             {jobs
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .filter((job) => {
