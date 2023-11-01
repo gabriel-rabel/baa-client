@@ -64,7 +64,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex flex-col  lg:grid lg:grid-cols-2 w-full gap-1">
+          <div className="flex  flex-col  lg:grid lg:grid-cols-2 w-full gap-1">
             {jobs
               .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
               .filter((job) => {
