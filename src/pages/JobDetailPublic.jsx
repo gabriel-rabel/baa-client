@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater";
 import api from "../axios/api";
+import toast from "react-hot-toast";
 
 export default function JobDetailPublic() {
   const [job, setJob] = useState({});
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getJob() {
@@ -18,6 +20,12 @@ export default function JobDetailPublic() {
 
     getJob();
   }, [params.id_job]);
+
+  function handleRedirectLogin(e) {
+    e.preventDefault();
+    toast.error("É necessário estar logado para se cadidatar a uma vaga!");
+    navigate("/login");
+  }
 
   return (
     <div className="my-6">
@@ -63,12 +71,13 @@ export default function JobDetailPublic() {
           <p className="text-sm">{job.business?.description}</p>
         </div>
         <div className="mt-6">
-          <Link
-            to="/signup"
-            className="bg-blue-900 hover:bg-blue-700 rounded-md text-white px-4 py-2 text-sm"
-          >
-            Quero me candidatar!
-          </Link>
+     
+          <button
+              onClick={handleRedirectLogin}
+              className="bg-blue-900 hover:bg-blue-700 rounded-md text-white px-4 py-2 text-sm"
+            >
+             Quero me candidatar!
+            </button>
         </div>
       </div>
     </div>

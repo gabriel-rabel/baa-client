@@ -19,7 +19,9 @@ import JobDetailPublic from "./pages/JobDetailPublic";
 import TermsOfUse from "./pages/TermsOfUsePage";
 import UserCandidatePage from "./pages/UserCandidatePage";
 import UserCurriculumPage from "./pages/UserCurriculumPage";
-
+import ForgotPassWord from "./pages/login/forgotpassword";
+import PasswordResetPage from "./pages/login/UserPasswordReset";
+import BusinessResetPassword from "./pages/login/BusinessPasswordReset";
 
 function App() {
   return (
@@ -28,12 +30,20 @@ function App() {
         <Toaster />
         <Navbar />
         <div className="max-w-7xl mx-auto flex-grow sm:px-6 lg:px-8  mt-16">
-
           <Routes>
             /*Rotas não protegidas*/
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/forgot-password" element={<ForgotPassWord />} />
+            <Route
+              path="/user/reset-password/:token"
+              element={<PasswordResetPage />}
+            />
+            <Route
+              path="/business/reset-password/:token"
+              element={<BusinessResetPassword/>}
+            />
             <Route path="/jobs/public" element={<JobsPublicPage />} />
             <Route path="/jobs/public/:id_job" element={<JobDetailPublic />} />
             <Route path="/termos" element={<TermsOfUse />} />
@@ -50,7 +60,6 @@ function App() {
               path="/meu-curriculo"
               element={<ProtectRoute Component={UserCurriculumPage} />}
             />
-
             <Route
               path="/profile-business"
               element={<ProtectRoute Component={ProfileBusiness} />}

@@ -6,6 +6,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import dateFormater from "../util/dateFormater.jsx";
 
 
+
 export default function UserCandidatePage(params) {
 
 

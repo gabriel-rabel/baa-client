@@ -77,15 +77,15 @@ export default function ProfileBusinessPage() {
       <div className="flex flex-col lg:flex-row gap-5">
         {/* left side perfil */}
         <div className="flex flex-col  justify-center rounded-md  lg:w-1/4  p-3 border">
-          <div className="flex justify-center p-5">
+          {/*<div className="flex justify-center p-5">
             <img
               src={formProfile.logo}
               className="flex lg:ml-5 w-40 h-40 rounded-full"
               alt="profile"
             />
-          </div>
+  </div>*/}
           <div className="flex flex-col items-center">
-            <h1 className="text-2xl  text-blue-900">{formProfile.name}</h1>
+            <h1 className="text-2xl font-medium text-blue-900">{formProfile.name}</h1>
             <p className="italic font-thin text-gray-500 text-sm">
               {formProfile.email}
             </p>
@@ -157,8 +157,8 @@ export default function ProfileBusinessPage() {
             <div className="flex flex-col lg:w-1/4">
               <label className="text-gray-600 font-semibold">Telefone:</label>
               <input
-                name="telefone"
-                value={formProfile.telefone}
+                name="phone"
+                value={formProfile.phone}
                 onChange={handleChangeProfile}
                 className="w-full shadow-sm rounded-md bg-gray-100 border border-gray-400 focus:ring focus:ring-blue-300 focus:outline-none"
               />

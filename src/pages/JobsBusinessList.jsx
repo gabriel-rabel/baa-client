@@ -3,7 +3,6 @@ import api from "../axios/api.js";
 import { Link } from "react-router-dom";
 import dateFormater from "../util/dateFormater.jsx";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
-import { IoReturnUpBackSharp } from "react-icons/io5";
 
 export default function JobsBusinessList() {
   const [business, setBusiness] = useState({});
@@ -35,7 +34,7 @@ export default function JobsBusinessList() {
 
   return (
     <div className="w-full m-auto my-6">
-      <p className="text-sm text-justify text-blue-900">
+      <p className="text-sm p-4 text-justify text-blue-900">
         <span className="font-semibold">{business.name}</span>, nesta área,
         oferecemos a você a flexibilidade de editar e excluir suas vagas de
         forma simples e intuitiva. Se surgirem atualizações ou mudanças nas
@@ -46,7 +45,7 @@ export default function JobsBusinessList() {
         permanentemente da lista.
       </p>
 
-      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-md mt-6">
+      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 lg:rounded-md mt-6">
         <table className="w-full divide-y divide-gray-300 ">
           <thead className="bg-gray-50">
             <tr>

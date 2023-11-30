@@ -45,14 +45,13 @@ export default function HomePage() {
         <img src={banner} alt="Banner" />
       </div>
       <section className="">
-        <div className="flex flex-col gap-5 my-5 ">
-          <p className=" text-sm mx-4 lg:mx-0 lg:text-base text-justify lg:font-normal text-blue-900">
-            Conectamos empresas e profissionais talentosos na região do{" "}
-            <span className="font-semibold italic">"Vale do Itajaí"</span>,
-            oferecendo vagas de todos os níveis de experiência. Facilitamos o
-            cadastro de vagas para empresas e a busca por oportunidades para
-            profissionais. Junte-se a nós e faça parte dessa comunidade de
-            sucesso!
+        <div className="flex flex-col justify-center items-center my-5 ">
+          <p className=" text-sm mx-4 lg:mx-0 lg:text-base text-justify lg:font-semibold text-blue-900">
+            Conectamos empresas e profissionais talentosos, oferecendo as mais variadas vagas.</p>
+          <p className=" text-sm mx-4 lg:mx-0 lg:text-base text-justify lg:font-thin  text-blue-900">
+           Facilitamos o
+            divulgação para empresas e a busca por oportunidades para
+            profissionais.
           </p>
         </div>
         <div className="container">
@@ -94,17 +93,17 @@ export default function HomePage() {
                         <span className="text-amber-400">
                           <BsBookmarkStarFill />{" "}
                         </span>
-                        <h1 className="font-semibold text-blue-900">
+                        <h1 className="text-xs lg:text-sm font-semibold text-blue-900">
                           {job.title}
                         </h1>
                       </div>
-                      <h2 className="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-red-700/10">
+                      <h2 className="text-xs lg:text-sm rounded-md bg-green-50 px-2 py-1  text-green-700 ring-1 ring-inset ring-red-700/10">
                         {dateFormater(job.createdAt)}
                       </h2>
                     </div>
 
                     <div className="flex justify-between">
-                      <p className="text-sm">{job.city}</p>
+                      <p className="text-xs lg:text-sm text-blue-900">{job.city}</p>
                     </div>
                   </Link>
                 );
@@ -126,13 +125,13 @@ export default function HomePage() {
               <input
                 type="text"
                 placeholder="Busque por vagas"
-                className="border border-gray-300 rounded-md px-4"
+                className="text-xs lg:text-sm border border-gray-300 rounded-md px-4"
                 value={search}
                 onChange={handleSearch}
               />
 
               <select
-                className="border border-gray-300 rounded-md px-4 pr-8"
+                className="text-xs lg:text-sm border border-gray-300 rounded-md px-4 pr-8"
                 onChange={handleModelFilter}
               >
                 <option value="">Todos</option>
@@ -170,17 +169,17 @@ export default function HomePage() {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <h1 className="font-semibold text-blue-900">
+                        <h1 className="text-xs lg:text-sm font-semibold text-blue-900">
                           {job.title}
                         </h1>
                       </div>
-                      <h2 className="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-red-700/10">
+                      <h2 className="text-xs lg:text-sm rounded-md bg-green-50 px-2 py-1 text-green-700 ring-1 ring-inset ring-red-700/10">
                         {dateFormater(job.createdAt)}
                       </h2>
                     </div>
 
                     <div className="flex justify-between">
-                      <p className="text-sm">{job.city}</p>
+                      <p className="text-xs lg:text-sm text-blue-900">{job.city}</p>
                     </div>
                   </Link>
                 );
@@ -190,9 +189,9 @@ export default function HomePage() {
             {numJobsToShow < totalJobs && (
               <button
                 onClick={loadMoreJobs}
-                className="bg-blue-900 text-white p-2 mt-4 rounded-md"
+                className="text-xs lg:text-sm bg-blue-900 hover:bg-blue-700 text-white p-2 mt-4 rounded-md"
               >
-                Carregar mais vagas...
+                Ver mais vagas...
               </button>
             )}
           </div>

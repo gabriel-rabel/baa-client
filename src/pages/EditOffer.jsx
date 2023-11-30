@@ -85,29 +85,29 @@ export default function EditOffer() {
       console.log(error);
     }
   }
-  console.log(job);
+
 
   return (
     <div className="flex flex-col lg:max-w-screen-xl">
-      <div className="bg-blue-900 text-white rounded-lg p-5 mt-6 flex flex-col font-thin">
+      <div className="bg-blue-900 text-white lg:rounded-lg p-5 mt-6 flex flex-col font-thin">
         <p className="text-sm leading-normal">
           Parabéns, você está prestes a promover uma vaga de emprego. Preencha
           os dados abaixo e siga as instruções.
         </p>
-        <p className="text-sm leading-normal">
+        <p className="text-sm">
           Atenção, ao cadastrar a vaga, se atente às informações inseridas, pois
           as mesmas serão de responsabilidade total da empresa contratante.
         </p>
       </div>
       <form
         onSubmit={handleSubmit}
-        className="rounded-xl mt-5 bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 border"
+        className="lg:rounded-xl mt-5 bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2 border"
       >
         <div className="flex flex-col space-y-2">
           <label className="text-blue-900 font-semibold">
             Será uma vaga em DESTAQUE?
           </label>
-          <p className="text-sm text-gray-500 italic font-thin">
+          <p className="text-sm text-gray-600 italic font-thin">
             Ao marcar <span className="font-normal">"SIM"</span> a sua vaga será classificada como destaque pelo prazo contratado. Ex: 7 dias, 15 dias, 30 dias.
             As vagas em DESTAQUE são exibidas na página inicial do nosso portal, aumentando a visibilidade da sua vaga, também mantemos as vagas em DESTAQUE no topo da lista da página de vagas pelo período contratado.
           </p>
@@ -170,7 +170,7 @@ export default function EditOffer() {
           />
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex flex-col lg:flex-row lg:justify-between">
           <div className="flex flex-col space-y-2">
             <label className="text-gray-600 font-semibold text-sm -mb-2 mt-2">
               Salário:
