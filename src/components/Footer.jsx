@@ -8,7 +8,7 @@ export default function Footer(params) {
           <a href="/" className="flex items-center mb-4 sm:mb-0">
             <img src={Logo} className="max-w-[200px]" alt="VagasDaqui Logo" />
           </a>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
+          <ul className="flex flex-wrap items-center mb-6 font-medium text-gray-500 sm:mb-0">
             <li>
               <a href="/" className="mr-4 md:mr-6 text-blue-950 hover:text-blue-700  ">
                 Início

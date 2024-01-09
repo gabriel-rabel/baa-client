@@ -34,7 +34,7 @@ export default function JobsBusinessList() {
 
   return (
     <div className="w-full m-auto my-6">
-      <p className="text-sm p-4 text-justify text-blue-900">
+      <p className="p-4 text-justify text-blue-900">
         <span className="font-semibold">{business.name}</span>, nesta área,
         oferecemos a você a flexibilidade de editar e excluir suas vagas de
         forma simples e intuitiva. Se surgirem atualizações ou mudanças nas
@@ -51,27 +51,27 @@ export default function JobsBusinessList() {
             <tr>
               <th
                 scope="col"
-                className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                className="py-3.5 pl-4 pr-3 text-left  font-semibold text-gray-900 sm:pl-6"
               >
                 Título da vaga
               </th>
               <th
                 scope="col"
-                className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                className="px-3 py-3.5 text-left  font-semibold text-gray-900"
               >
                 Criação
               </th>
               <th
                 scope="col"
-                className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                className="px-3 py-3.5 text-left  font-semibold text-gray-900"
               >
                 Condição
               </th>
               <th
                 scope="col"
-                className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                className="pl-10 font-semibold text-gray-900"
               >
-                <span className="sr-only">Editar</span>
+                Edição
               </th>
             </tr>
           </thead>

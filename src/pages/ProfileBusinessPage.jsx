@@ -114,7 +114,7 @@ export default function ProfileBusinessPage() {
               </p>
             </div>
           </div>
-          <div className="flex-row gap-5 w-full justify-around hidden lg:flex">
+          <div className="flex-row gap-5 mb-10 w-full justify-around hidden lg:flex">
             <div>
               <button className="rounded p-3 bg-blue-900 text-white">
                 Cadastrar Vaga

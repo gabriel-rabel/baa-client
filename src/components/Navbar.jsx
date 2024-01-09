@@ -4,7 +4,12 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon, UserIcon, ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  UserIcon,
+  ArrowRightOnRectangleIcon,
+} from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
 import toast from "react-hot-toast";
 
@@ -81,21 +86,15 @@ export default function NavBar() {
                 <>
                   <Link
                     to="/business/criar-vaga"
-                    className="text-dm font-semibold leading-6 text-blue-950 hover:text-blue-700"
+                    className="font-semibold leading-6 text-blue-950 hover:text-blue-700"
                   >
                     Cadastrar Vaga
                   </Link>
                   <Link
                     to="/business/jobs-list"
-                    className="text-dm font-semibold leading-6 text-blue-950 hover:text-blue-700"
+                    className="font-semibold leading-6 text-blue-950 hover:text-blue-700"
                   >
                     Minhas Vagas
-                  </Link>
-                  <Link
-                    to="/profile-business"
-                    className="text-dm font-semibold leading-6 text-blue-950 hover:text-blue-700"
-                  >
-                    <UserIcon />Minha Conta
                   </Link>
                 </>
               )}
@@ -105,7 +104,7 @@ export default function NavBar() {
           <Link
             to="https://api.whatsapp.com/send?phone=5547997841432&text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20portal%20Vagasdaqui%20e%20a%20minha%20d%C3%BAvida%20%C3%A9:%20"
             target="_blank"
-            className="text-dm font-semibold leading-6 text-blue-950 hover:text-blue-700"
+            className="font-semibold leading-6 text-blue-950 hover:text-blue-700"
           >
             Contato
           </Link>
@@ -121,7 +120,7 @@ export default function NavBar() {
               </Link>
               <Link
                 to="/signup"
-                className="text-sm font-semibold leading-6 text-white bg-blue-900 hover:bg-blue-700 rounded-md px-4 py-2"
+                className=" font-semibold leading-6 text-white bg-blue-900 hover:bg-blue-700 rounded-md px-4 py-2"
               >
                 Cadastre-se <span aria-hidden="true">&rarr;</span>
               </Link>
@@ -133,24 +132,32 @@ export default function NavBar() {
                 <>
                   <Link
                     to="/minhas-candidaturas"
-                    className="text-blue-950 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-blue-950 hover:text-blue-700 px-3 py-2 rounded-md  font-medium"
                   >
                     Minhas Candidaturas
                   </Link>
                   <Link
                     to="/meu-curriculo"
-                    className="text-blue-950 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-blue-950 hover:text-blue-700 px-3 py-2 rounded-md  font-medium"
                   >
                     Meu Currículo
                   </Link>
                   <Link
                     to="/profile"
-                    className="flex gap-1 items-center text-blue-950 hover:text-blue-700  p-2 rounded-md text-sm font-medium"
+                    className="flex gap-1 items-center text-blue-950 hover:text-blue-700  p-2 rounded-md  font-medium"
                   >
-                    <UserIcon className="w-4 h-4"/>Minha Conta
+                    <UserIcon className="w-4 h-4" />
+                    Minha Conta
                   </Link>
                 </>
               )}
+              <Link
+                to="/profile-business"
+                className="flex items-center gap-1 font-semibold leading-6 text-blue-950 hover:text-blue-700"
+              >
+                <UserIcon className="w-4 h-4" />
+                Minha Conta
+              </Link>
               <button
                 onClick={handleLogout}
                 className="bg-blue-900 hover:bg-blue-700 text-white rounded-md p-1 w-20"
@@ -162,7 +169,7 @@ export default function NavBar() {
           )}
         </div>
       </nav>
-      {/*Menu Computador*/}
+      {/*<--Menu Computador*/}
       <Dialog
         as="div"
         className="lg:hidden"
@@ -192,7 +199,7 @@ export default function NavBar() {
               <div className="flex flex-col justify-left gap-2 space-y-2 py-6">
                 <Link
                   to="/"
-                  className="text-sm font-semibold leading-6 text-blue-950 hover:text-blue-700"
+                  className=" font-semibold leading-6 text-blue-950 hover:text-blue-700"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Início
@@ -203,7 +210,7 @@ export default function NavBar() {
                       <div className="flex flex-col gap-4">
                         <Link
                           to="/business/criar-vaga"
-                          className="text-sm font-semibold leading-6 text-blue-950 hover:text-blue-700"
+                          className=" font-semibold leading-6 text-blue-950 hover:text-blue-700"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           Cadastrar Vaga
@@ -219,20 +226,20 @@ export default function NavBar() {
                     )}
                     {role === "USER" && (
                       <div className="flex flex-col gap-4">
-                      <Link
-                        to="/profile"
-                        className="text-sm font-semibold  text-blue-950 hover:text-blue-700"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                      Minhas Candidaturas
-                      </Link>
-                      <Link
-                      to="/meu-curriculo"
-                      className="text-sm text-blue-950 hover:text-blue-700  rounded-md font-medium"
-                    >
-                    Meu Currículo
-                    </Link>
-                    </div>
+                        <Link
+                          to="/profile"
+                          className=" font-semibold  text-blue-950 hover:text-blue-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Minhas Candidaturas
+                        </Link>
+                        <Link
+                          to="/meu-curriculo"
+                          className=" text-blue-950 hover:text-blue-700  rounded-md font-medium"
+                        >
+                          Meu Currículo
+                        </Link>
+                      </div>
                     )}
                   </div>
                 )}
@@ -240,16 +247,16 @@ export default function NavBar() {
                 {/* login false */}
                 {isLoggedIn === false && (
                   <button
-                  onClick={handleRedirectLogin}
-                  className="self-start text-sm font-semibold text-blue-950 hover:text-blue-700"
-                >
-                  Cadastrar Vaga
-                </button>
+                    onClick={handleRedirectLogin}
+                    className="self-start  font-semibold text-blue-950 hover:text-blue-700"
+                  >
+                    Cadastrar Vaga
+                  </button>
                 )}
                 <Link
                   to="https://api.whatsapp.com/send?phone=5547997841432&text=Ol%C3%A1,%20estou%20entrando%20em%20contato%20atrav%C3%A9s%20do%20portal%20Vagasdaqui%20e%20a%20minha%20d%C3%BAvida%20%C3%A9:%20"
                   target="_blank"
-                  className="text-sm font-semibold text-blue-950 hover:text-blue-700"
+                  className=" font-semibold text-blue-950 hover:text-blue-700"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contato
@@ -260,19 +267,19 @@ export default function NavBar() {
                   <div className="flex justify-between">
                     <Link
                       to="/signup"
-                      className="text-sm items-center -mx-3 block rounded-lg px-3 underline leading-7 text-gray-600 italic hover:bg-gray-50"
+                      className=" items-center -mx-3 block rounded-lg px-3 underline leading-7 text-gray-600 italic hover:bg-gray-50"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Cadastre-se
                     </Link>
 
                     <Link
-                to="/signup"
-                onClick={() => setMobileMenuOpen(false)}
-                className="justify-center rounded-md bg-blue-900 px-4 py-2  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900"
-              >
-                Entrar 
-              </Link>
+                      to="/signup"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="justify-center rounded-md bg-blue-900 px-4 py-2   font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900"
+                    >
+                      Entrar
+                    </Link>
                   </div>
                 )}
                 {isLoggedIn === true && (
@@ -280,16 +287,16 @@ export default function NavBar() {
                     {role === "BUSINESS" && (
                       <Link
                         to="/profile-business"
-                        className="flex items-center gap-1 text-sm font-semibold leading-6 text-blue-950 hover:text-blue-700 mr-3"
+                        className="flex items-center gap-1  font-semibold leading-6 text-blue-950 hover:text-blue-700 mr-3"
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <UserIcon className="w-4 h-4" /> Meu Perfil
+                        <UserIcon className="w-4 h-4" /> Minha Conta
                       </Link>
                     )}
                     {role === "USER" && (
                       <Link
                         to="/profile"
-                        className="flex items-center gap-1 text-sm font-semibold leading-6 text-blue-950 hover:text-blue-700 mr-3"
+                        className="flex items-center gap-1  font-semibold leading-6 text-blue-950 hover:text-blue-700 mr-3"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         <UserIcon className="w-4 h-4" /> Minha Conta
