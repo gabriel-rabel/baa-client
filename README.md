@@ -20,7 +20,7 @@ Este sistema é um portal destinado ao suporte de clientes que utilizam serviço
 ### Como Executar o Projeto
 
 ## 1. Clone o repositório:
-git clone https://github.com/<usuario>/baa-logistica-br-client.git
+git clone https://github.com/gabriel-rabel/baa-client.git
 
 
 ## 2. Navegue até o diretório do projeto e instale as dependências:
